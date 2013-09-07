@@ -19,7 +19,7 @@ ifeq ($(firstword $(filter Darwin,$(UNAME))),Darwin)
 # for MacOSX
 CXX_RELEASE_FLAGS += -march=nocona
 endif
-CPPFLAGS = -Wall -std=c++0x
+CPPFLAGS = -Wall -std=c++0x -Wno-unused-but-set-variable
 LDFLAGS  = -lm
 VPATH	 = 
 .DEFAULT_GOAL := release
