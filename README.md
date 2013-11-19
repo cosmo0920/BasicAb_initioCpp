@@ -14,7 +14,9 @@ HeH+の第一原理計算を行うアプリケーション。
 
 ## COPYING
 
-license: LGPL 2.1.
+### license
+
+LGPL 2.1.
 
 ただしclapack.hは除く。
 
