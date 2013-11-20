@@ -1,6 +1,24 @@
 basic Ab initio Cpp
 ===
 
+## ビルド
+
+clapackはgit submoduleを使って持ってきています。
+
+```bash
+$ make prepare
+```
+
+か
+
+```bash
+$ bash ./prepare.sh
+```
+
+で用意できます。
+
+## 説明
+
 HeH+の第一原理計算を行うアプリケーション。
 第一原理計算の再初歩。
 

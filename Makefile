@@ -1,13 +1,13 @@
-TARGET 	= heh1p
+TARGET  = heh1p
 SOURCES = $(wildcard *.cpp)
-OBJS = $(patsubst %.cpp,%.o,$(SOURCES))
+OBJS    = $(patsubst %.cpp,%.o,$(SOURCES))
 
-RM 	:= rm
+RM  := rm
 CXX := g++
-CC 	:= gcc
+CC  := gcc
 
-CXX_DEBUG_FLAGS		=	-g -O0 -DDEBUG
-CXX_RELEASE_FLAGS	=	-O2
+CXX_DEBUG_FLAGS = -g -O0 -DDEBUG
+CXX_RELEASE_FLAGS = -O2
 UNAME := $(shell uname -a)
 #target
 ifeq ($(firstword $(filter Linux,$(UNAME))),Linux)
@@ -21,24 +21,24 @@ CXX_RELEASE_FLAGS += -march=nocona
 endif
 CPPFLAGS = -Wall -std=c++0x -Wno-unused-but-set-variable
 LDFLAGS  = -lm
-VPATH	 = 
+VPATH    =
 .DEFAULT_GOAL := release
 
 # debug
-.PHONY	: debug
-debug 	: CXXFLAGS+=$(CXX_DEBUG_FLAGS)
-debug 	: all
+.PHONY: debug
+debug: CXXFLAGS+=$(CXX_DEBUG_FLAGS)
+debug: all
 # release
-.PHONY	: release
-release	: CXXFLAGS+=$(CXX_RELEASE_FLAGS)
-release	: all
+.PHONY: release
+release: CXXFLAGS+=$(CXX_RELEASE_FLAGS)
+release: all
 
 all : $(TARGET)
 
 ${TARGET}:${OBJS}
 	${CXX} -o $@ $^ ${CXXFLAGS} ${LDFLAGS}
 %.o: %.c
-	${CXX} -c ${SOURCES} ${CXXFLAGS} 
+	${CXX} -c ${SOURCES} ${CXXFLAGS}
 # make clean
 .PHONY: clean
 clean:
@@ -54,3 +54,6 @@ clean:
 			${RM} -f $$FILE ; \
 		fi ; \
 	done
+
+prepare:
+	bash ./prepare.sh
